@@ -8,18 +8,23 @@ import Login from './components/login';
 import { Dashboard } from './components/dashboard';
 import { Settings } from './components/settings';
 import { ProtectedRoute } from './ProtectedRoute';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
-        <Route path="/login" component={Login} />
+        <div className="auth-wrapper">
+          <div className="auth-inner">
+          <Route path="/login" component={Login} />
+          </div>
+        </div>
         <ProtectedRoute exact={true} path="/" component={Dashboard} />
         <ProtectedRoute path="/setting" component={Settings} />
         <ProtectedRoute component={Dashboard} />
       </Switch>
     </BrowserRouter>
-    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
